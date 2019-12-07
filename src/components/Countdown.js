@@ -1,5 +1,4 @@
 import React from 'react';
-import BlockEvent from './BlockEvent'
 
 let countdown = (props) => {
   return(

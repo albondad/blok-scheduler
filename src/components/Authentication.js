@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Auxiliary from './Auxiliary'
-import AuthenticationForm from './AuthenticationForm';
+import FormAuthentication from './FormAuthentication';
 
 class Authentication extends Component {
   state = {
@@ -29,7 +29,7 @@ class Authentication extends Component {
         }
         {
           this.state.show === 1 ?
-          <AuthenticationForm
+          <FormAuthentication
             buttonText='sign up'
             backOnClick={() => this.setShow(0)}
             buttonOnClick={this.props.functions.signUpWithEmailAndPassword}
@@ -38,7 +38,7 @@ class Authentication extends Component {
         }
         {
           this.state.show === 2 ?
-          <AuthenticationForm
+          <FormAuthentication
             buttonText='login'
             backOnClick={() => this.setShow(0)}
             buttonOnClick={this.props.functions.loginWithEmailAndPassword}

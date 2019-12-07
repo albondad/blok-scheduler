@@ -16,6 +16,7 @@ let body = (props) => {
         : <ScheduleViewer
             schedules={props.schedules}
             schedulesIndex={props.schedulesIndex}
+            functions={props.functions}
           />
       }
     </section>
