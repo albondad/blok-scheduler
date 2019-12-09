@@ -7,18 +7,36 @@ let blockEvents = (props) => {
   let addBlockEvent = () => {
     props.functions.showModal(<FormAddBlockEvent functions={props.functions}/>);
   }
+  let getSortedBlockEvents = (array) => {
+    for (let i = 0; i < array.length; i++) {
+      let minimum = array[i]
+      for (let j = i; j < array.length; j++) {
+        //console.log(array[j].name + " compared to " + minimum.name )
+        if (array[j].startTime < minimum.startTime) {
+          minimum = array[j];
+          array.splice(j, 1);
+          array.unshift(minimum);
+        }
+      }
+    }
+    return array;
+  }
 
   let renderBlockEvents = () => {
     if (props.schedules.length === 0 || props.schedules[props.schedulesIndex] === undefined) {
       return null;
     }
     else {
+
       return (
-        props.schedules[props.schedulesIndex].blockEvents.map(blockEvent => {
+        getSortedBlockEvents(props.schedules[props.schedulesIndex].blockEvents).map((blockEvent, index) => {
           return (
             <BlockEvent
               name={blockEvent.name}
-              duration={blockEvent.startTime}
+              startTime={blockEvent.startTime}
+              endTime={blockEvent.endTime}
+              index={index}
+              onClick={props.functions.deleteBlockEvent}
             />
           )
         })

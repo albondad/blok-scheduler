@@ -11,7 +11,7 @@ let formAddBlockEvent = (props) => {
 
     // gets end time in seconds
     let endTimeArray = event.target.parentNode['endTime'].value.split(':');
-    let endTime = startTimeArray[0] * 3600 + startTimeArray[1] * 60;
+    let endTime = endTimeArray[0] * 3600 + endTimeArray[1] * 60;
 
     //creating block event
     props.functions.createBlockEvent(eventName, startTime, endTime)

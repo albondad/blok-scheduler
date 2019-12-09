@@ -87,9 +87,17 @@ class Layout extends Component {
   }
   //block event functions
   createBlockEvent = (name, startTime, endTime) => {
-    console.log('[createBlockEvent] function called')
+    console.log('[createBlockEvent] function called');
     let schedules = this.state.schedules;
     schedules[this.state.schedulesIndex].blockEvents.push({name: name, startTime: startTime, endTime: endTime});
+    this.setState({schedules: schedules});
+    firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).set({schedules: schedules});
+  }
+  deleteBlockEvent = (index) => {
+    console.log('[createBlockEvent] function called');
+    console.log('[createBlockEvent]', index);
+    let schedules = this.state.schedules;
+    schedules[this.state.schedulesIndex].blockEvents.splice(index, 1);
     this.setState({schedules: schedules});
     firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).set({schedules: schedules});
   }
@@ -167,6 +175,7 @@ class Layout extends Component {
             hideModal: this.hideModal,
             deleteSchedule: this.deleteSchedule,
             createBlockEvent: this.createBlockEvent,
+            deleteBlockEvent: this.deleteBlockEvent,
           }}
         />
       </Auxiliary>
