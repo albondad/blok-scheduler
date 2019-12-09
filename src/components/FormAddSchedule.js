@@ -10,7 +10,7 @@ let formAddSchedule = (props) => {
 
   return (
     <form>
-      <div className='form-title' onClick={props.backOnClick}>SCHEDULE NAME</div>
+      <div className='form-title' onClick={props.backOnClick}>ADD SCHEDULE</div>
       <input name='scheduleName' type='text' placeholder='name'/>
       <button onClick={onClick}>Submit</button>
     </form>

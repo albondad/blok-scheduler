@@ -10,7 +10,6 @@ import Auxiliary from './Auxiliary';
 import Body from './Body';
 import Navigation from './Navigation';
 import Modal from './Modal';
-import FormAddBlockEvent from './FormAddBlockEvent';
 
 class Layout extends Component {
   state = {
@@ -72,7 +71,7 @@ class Layout extends Component {
     console.log('[createSchedule] function called');
     if (name) {
       let schedules = this.state.schedules;
-      let newSchedule = {name: name, blockEvents: {}};
+      let newSchedule = {name: name, blockEvents: []};
       schedules.push(newSchedule);
       console.log(firebase.auth().currentUser.uid)
       firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).set({schedules: schedules});
@@ -85,12 +84,14 @@ class Layout extends Component {
     schedules.splice(this.state.schedulesIndex, 1);
     this.setState({schedules: schedules});
     firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).set({schedules: schedules});
-    console.log(schedules);
   }
   //block event functions
-  createBlockEvent = () => {
+  createBlockEvent = (name, startTime, endTime) => {
     console.log('[createBlockEvent] function called')
     let schedules = this.state.schedules;
+    schedules[this.state.schedulesIndex].blockEvents.push({name: name, startTime: startTime, endTime: endTime});
+    this.setState({schedules: schedules});
+    firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).set({schedules: schedules});
   }
 
   componentDidMount = () => {

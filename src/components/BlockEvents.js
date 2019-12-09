@@ -1,20 +1,18 @@
 import React from 'react';
 import Auxiliary from './Auxiliary';
 import BlockEvent from './BlockEvent';
+import FormAddBlockEvent from './FormAddBlockEvent';
 
 let blockEvents = (props) => {
   let addBlockEvent = () => {
-    props.functions.showModal();
-    props.functions.createBlockEvent();
+    props.functions.showModal(<FormAddBlockEvent functions={props.functions}/>);
   }
 
   let renderBlockEvents = () => {
-    console.log(props.schedules.length === 0);
-    if (props.schedules.length === 0) {
+    if (props.schedules.length === 0 || props.schedules[props.schedulesIndex] === undefined) {
       return null;
     }
     else {
-      console.log(props.schedules[0].blockEvents)
       return (
         props.schedules[props.schedulesIndex].blockEvents.map(blockEvent => {
           return (
@@ -33,15 +31,7 @@ let blockEvents = (props) => {
       <div id='scheduleViewer-containerBlockEvents' className='container-fluid'>
       <div id='scheduleViewer-titleSchedule'>Schedule</div>
         <div className='row m-0'>
-          {}
-          <BlockEvent
-            name={'asdfasdf'}
-            duration={'asdfasdf'}
-          />
-          <BlockEvent
-            name={'asdfasdf'}
-            duration={'asdfasdf'}
-          />
+          {renderBlockEvents()}
         </div>
         <div id='scheduleViewer-addBlockEvent' className='col-12 p-0' onClick={addBlockEvent}>Add Event <i className="fas fa-plus fa-fw"></i></div>
       </div>
