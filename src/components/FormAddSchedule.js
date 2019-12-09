@@ -4,8 +4,12 @@ let formAddSchedule = (props) => {
   const onClick = (event) => {
     event.preventDefault();
     let scheduleName = event.target.parentNode['scheduleName'].value;
-    props.functions.createSchedule(scheduleName);
-    props.functions.hideModal();
+
+    if (scheduleName !== '') {
+      console.log('test')
+      props.functions.createSchedule(scheduleName);
+      props.functions.hideModal();
+    }
   }
 
   return (
