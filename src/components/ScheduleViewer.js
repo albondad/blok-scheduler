@@ -5,7 +5,10 @@ import BlockEvents from './BlockEvents';
 let scheduleViewer = (props) => {
   return(
     <div>
-      <Countdown />
+      <Countdown
+        schedules={props.schedules}
+        schedulesIndex={props.schedulesIndex}
+      />
       <BlockEvents
         schedules={props.schedules}
         schedulesIndex={props.schedulesIndex}

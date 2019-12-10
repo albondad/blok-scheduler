@@ -177,10 +177,17 @@ input::placeholder {
   text-align: center;
 }
 #scheduleViewer-titleCountdown {
+  font-size: 24px;
   font-weight: 700;
 }
 #scheduleViewer-durationCountDown {
+  font-size: 20px;
   font-weight: 400;
+}
+#scheduleViewer-occurenceCountdown {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--blue01);
 }
 #scheduleViewer-textCountdown {
   font-size: 64px;
