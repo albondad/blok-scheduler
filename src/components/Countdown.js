@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class Countdown extends Component {
   state = {
-    name: 'Title',
+    name: 'no events',
     duration: '00:00 to 00:00',
     text: '00:00:00',
     current: false,
@@ -36,7 +36,7 @@ class Countdown extends Component {
           this.setState({
             name: blockEvents[i].name,
             duration: this.getFormattedTimeFromSeconds(blockEvents[i].startTime, false, true) + ' to ' + this.getFormattedTimeFromSeconds(blockEvents[i].endTime, false, true),
-            text: this.getFormattedTimeFromSeconds(Math.abs(currentTime - blockEvents[i].startTime), true, false),
+            text: this.getFormattedTimeFromSeconds(Math.abs(currentTime - blockEvents[i].endTime), true, false),
             current: true,
           })
           break;
@@ -54,6 +54,7 @@ class Countdown extends Component {
 
     hours = hours.toString().length === 1 ? hours = '0' + hours : hours;
     minutes = minutes.toString().length === 1 ? minutes = '0' + minutes : minutes;
+    seconds = seconds.toString().length === 1 ? seconds = '0' + seconds : seconds;
 
     if (showMeridiem) {
       meridiem = time >= 43200 ? 'PM' : 'AM';
