@@ -13,9 +13,16 @@ let formAddBlockEvent = (props) => {
     let endTimeArray = event.target.parentNode['endTime'].value.split(':');
     let endTime = endTimeArray[0] * 3600 + endTimeArray[1] * 60;
 
-    //creating block event
-    props.functions.createBlockEvent(eventName, startTime, endTime)
-    props.functions.hideModal();
+    console.log(startTime > endTime)
+    //checking for empty fields, and if the start time is greater than the end time
+    if (eventName !== '' &&
+        !isNaN(startTime) &&
+        !isNaN(endTime) &&
+        startTime < endTime) {
+      //creating block event
+      props.functions.createBlockEvent(eventName, startTime, endTime)
+      props.functions.hideModal();
+    }
   }
 
   return (
