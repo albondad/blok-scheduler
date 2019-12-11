@@ -1,8 +1,8 @@
 ### Description
 
-##A tool used to keep track of schedules following a block schedule type system.
+A tool used to keep track of schedules following a block schedule type system.
 
-##This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
