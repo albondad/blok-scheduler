@@ -77,7 +77,8 @@ class Layout extends Component {
     console.log('[createSchedule] function called');
     if (name) {
       let schedules = this.state.schedules;
-      let newSchedule = {name: name, blockEvents: []};
+      let key = new Date().getYear() + '' + new Date().getTime();
+      let newSchedule = {name: name, blockEvents: [], key: key};
       schedules.push(newSchedule);
       console.log(firebase.auth().currentUser.uid)
       firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).set({schedules: schedules});
@@ -95,7 +96,8 @@ class Layout extends Component {
   createBlockEvent = (name, startTime, endTime) => {
     console.log('[createBlockEvent] function called');
     let schedules = this.state.schedules;
-    schedules[this.state.schedulesIndex].blockEvents.push({name: name, startTime: startTime, endTime: endTime});
+    let key = new Date().getYear() + '' + new Date().getTime();
+    schedules[this.state.schedulesIndex].blockEvents.push({name: name, startTime: startTime, endTime: endTime, key: key});
     this.setState({schedules: schedules});
     firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).set({schedules: schedules});
   }

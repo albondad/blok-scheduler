@@ -37,6 +37,7 @@ let blockEvents = (props) => {
               endTime={blockEvent.endTime}
               index={index}
               onClick={props.functions.deleteBlockEvent}
+              key={blockEvent.key}
             />
           )
         })

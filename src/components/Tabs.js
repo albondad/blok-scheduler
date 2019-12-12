@@ -33,6 +33,7 @@ let tabs = (props) => {
             title={schedule.name}
             icon={<i className="fas fa-clipboard-list fa-fw"></i>}
             onClick={() => props.functions.setScheduleIndex(index)}
+            key={schedule.key}
           />
         )})
       }
