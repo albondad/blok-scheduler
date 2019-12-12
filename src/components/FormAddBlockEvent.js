@@ -16,13 +16,16 @@ let formAddBlockEvent = (props) => {
     //prevents time overlaps
     let hasOverlap = false;
     props.schedule.blockEvents.forEach(blockEvent => {
-      if (startTime < blockEvent.startTime && startTime < blockEvent.endTime) {
+      if (startTime > blockEvent.startTime && startTime < blockEvent.endTime) {
+        console.log(blockEvent.startTime, blockEvent.endTime);
         hasOverlap = true;
       }
-      else if (endTime < blockEvent.startTime && endTime < blockEvent.endTime) {
+      else if (endTime > blockEvent.startTime && endTime < blockEvent.endTime) {
+        console.log(blockEvent.startTime, blockEvent.endTime);
         hasOverlap = true;
       }
     });
+    console.log('[onClick] hasOverlap:', hasOverlap);
 
     //checking for empty fields, and if the start time is greater than the end time
     if (eventName !== '' &&
