@@ -12,7 +12,7 @@ let formAuthentication = (props) => {
     <form>
       <div className='formAuthentication-back' onClick={props.backOnClick}>back</div>
       <input name='email' type='email' placeholder='email'/>
-      <input name='password' placeholder='password'/>
+      <input name='password' type='password' placeholder='password'/>
       <button onClick={onClick}>{props.buttonText}</button>
     </form>
   )

@@ -5,7 +5,7 @@ import FormAddBlockEvent from './FormAddBlockEvent';
 
 let blockEvents = (props) => {
   let addBlockEvent = () => {
-    props.functions.showModal(<FormAddBlockEvent functions={props.functions}/>);
+    props.functions.showModal(<FormAddBlockEvent functions={props.functions} schedule={props.schedules[props.schedulesIndex]}/>);
   }
   let getSortedBlockEvents = (array) => {
     for (let i = 0; i < array.length; i++) {

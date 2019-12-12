@@ -13,12 +13,23 @@ let formAddBlockEvent = (props) => {
     let endTimeArray = event.target.parentNode['endTime'].value.split(':');
     let endTime = endTimeArray[0] * 3600 + endTimeArray[1] * 60;
 
-    console.log(startTime > endTime)
+    //prevents time overlaps
+    let hasOverlap = false;
+    props.schedule.blockEvents.forEach(blockEvent => {
+      if (startTime < blockEvent.startTime && startTime < blockEvent.endTime) {
+        hasOverlap = true;
+      }
+      else if (endTime < blockEvent.startTime && endTime < blockEvent.endTime) {
+        hasOverlap = true;
+      }
+    });
+
     //checking for empty fields, and if the start time is greater than the end time
     if (eventName !== '' &&
         !isNaN(startTime) &&
         !isNaN(endTime) &&
-        startTime < endTime) {
+        startTime < endTime &&
+        !hasOverlap) {
       //creating block event
       props.functions.createBlockEvent(eventName, startTime, endTime)
       props.functions.hideModal();

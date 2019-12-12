@@ -34,10 +34,16 @@ class Layout extends Component {
     firebase.auth().signInWithEmailAndPassword(email, password);
   }
   loginWithGoogle = () => {
+    console.log('[loginWithGoogle] function called')
     let provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(result => {
-    let user = result.user;
-    console.log(user.uid)
+      console.log('[loginWithGoogle] account chosen')
+      firebase.firestore().collection('users').doc(result.user.uid).get().then(doc => {
+        console.log('checking for account');
+        if (!doc.exists) {
+          firebase.firestore().collection('users').doc(result.user.uid).set({schedules: []});
+        }
+      })
     }).catch(function(error) {
     });
   }
@@ -123,7 +129,9 @@ class Layout extends Component {
         console.log('[onAuthStateChanged] user logged in');
         this.setState({isAuthenticated: true});
         firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).get().then(snapshot => {
-          this.setState({schedules: snapshot.data().schedules})
+          if (snapshot.data() !== undefined) {
+            this.setState({schedules: snapshot.data().schedules})
+          }
         })
       } else {
         console.log('[onAuthStateChanged] user logged out');
