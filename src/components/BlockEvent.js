@@ -31,6 +31,7 @@ let blockEvent = (props) => {
         }
       </div>
       <div className='blockEvent-icon col-3 p-0 d-flex align-items-center justify-content-end'><i className="far fa-trash-alt fa-fw" onClick={() => props.onClick(props.index)}></i></div>
+      <div className='blockEvent-divider col-12'></div>
     </Auxiliary>
   )
 }

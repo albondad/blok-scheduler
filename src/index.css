@@ -224,6 +224,11 @@ input::placeholder {
   font-size: 16px;
   text-align: right;
 }
+.blockEvent-divider {
+  height: 4px;
+  background-color: var(--gray01);
+  margin: 16px 0px;
+}
 #scheduleViewer-deleteSchedule {
   margin-top: 36px;
   font-size: 36px;
