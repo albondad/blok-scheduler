@@ -125,10 +125,6 @@ class Layout extends Component {
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
 
-    if (!firebase.apps.length) {
-      firebase.initializeApp({});
-      console.log('test');
-    }
     //checks if a user logged in or not
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
