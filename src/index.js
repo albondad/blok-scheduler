@@ -4,6 +4,7 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
 console.log(process.env.REACT_APP_API_KEY)
+console.log(React.version)
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

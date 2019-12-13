@@ -48,7 +48,7 @@ let blockEvents = (props) => {
   return(
     <Auxiliary>
       <div id='scheduleViewer-containerBlockEvents' className='container-fluid'>
-      <div id='scheduleViewer-titleSchedule'>Schedule</div>
+      <div id='scheduleViewer-titleSchedule'>{props.schedules[props.schedulesIndex].name}</div>
         <div className='row m-0'>
           {renderBlockEvents()}
         </div>
