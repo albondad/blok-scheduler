@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 
+import Auxiliary from './Auxiliary';
+
 class Countdown extends Component {
   state = {
     name: 'no events',
-    duration: '00:00 to 00:00',
+    duration: '00:00 AM to 00:00 PM',
     text: '00:00:00',
     current: false,
   }
@@ -17,7 +19,7 @@ class Countdown extends Component {
       if (this.props.schedules[this.props.schedulesIndex].blockEvents.length === 0) {
         this.setState({
           name: 'no events',
-          duration: '00:00 to 00:00',
+          duration: '00:00 AM to 00:00 PM',
           text: '00:00:00',
           current: false,
         })
@@ -69,12 +71,21 @@ class Countdown extends Component {
 
   render() {
     return(
+      <Auxiliary>
+      <div className='body-header text-uppercase'>
+        <div className='row'>
+          <div className='col-6'>Schedule</div>
+          <div className='col-6 text-right'><i className="fas fa-clock fa-fw"></i></div>
+        </div>
+      </div>
       <div id='scheduleViewer-containerCountdown'>
-        <div id='scheduleViewer-titleCountdown'>{this.state.name}</div>
-        <div id='scheduleViewer-occurenceCountdown'>{this.state.current ? 'current' : 'upcoming'}</div>
-        <div id='scheduleViewer-durationCountDown'>{this.state.duration}</div>
+
+        <div id='scheduleViewer-titleCountdown'>{this.state.current ? this.state.name : 'Free Time'}</div>
+        {/*<div id='scheduleViewer-occurenceCountdown'>{this.state.current ? 'current' : 'upcoming'}</div>*/}
+        <div id='scheduleViewer-durationCountDown'>{this.state.current ? this.state.duration : null}</div>
         <div id='scheduleViewer-textCountdown'>{this.state.text}</div>
       </div>
+      </Auxiliary>
     )
   }
 }

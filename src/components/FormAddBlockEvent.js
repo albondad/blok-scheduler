@@ -41,7 +41,7 @@ let formAddBlockEvent = (props) => {
 
   return (
     <form>
-      <div className='form-title' onClick={props.backOnClick}>ADD EVENT</div>
+      <div className='form-title' onClick={props.backOnClick}>EVENT</div>
       <div className='form-label' onClick={props.backOnClick}>Event Name</div>
       <input name='eventName' type='text' placeholder='name'/>
       <div className='form-label' onClick={props.backOnClick}>Start Time</div>

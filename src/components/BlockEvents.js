@@ -47,12 +47,18 @@ let blockEvents = (props) => {
 
   return(
     <Auxiliary>
-      <div id='scheduleViewer-containerBlockEvents' className='container-fluid'>
-      <div id='scheduleViewer-titleSchedule'>{props.schedules[props.schedulesIndex].name}</div>
-        <div className='row m-0'>
-          {renderBlockEvents()}
+      <div className='container-fluid body-header text-uppercase'>
+        <div className='row'>
+          <div className='col-6'>Schedule</div>
+          <div className='col-6 text-right'><i className="fas fa-clipboard fa-fw"></i></div>
         </div>
-        <div id='scheduleViewer-addBlockEvent' className='col-12 p-0' onClick={addBlockEvent}>Add Event <i className="fas fa-plus fa-fw"></i></div>
+      </div>
+      <div id='scheduleViewer-containerBlockEvents' className='container-fluid'>
+      
+      <div id='scheduleViewer-addBlockEvent' className='col-12 p-0' onClick={addBlockEvent}>Add Event <i className="fas fa-plus fa-fw"></i></div>
+      <div className='row m-0'>
+        {renderBlockEvents()}
+      </div>
       </div>
     </Auxiliary>
   )

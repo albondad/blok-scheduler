@@ -8,6 +8,12 @@ let body = (props) => {
   return(
     <section id='body'>
       {
+        //showss body backdrop
+        props.showBodyBackdrop ?
+        <div id='body-backdrop'></div>
+        : null
+      }
+      {
         //showss authentication forms
         !props.isAuthenticated ?
         <Auxiliary>

@@ -24,7 +24,10 @@ let tabs = (props) => {
       <Tab
         title={'Logout'}
         icon={<i className="fas fa-user fa-fw"></i>}
-        onClick={props.functions.logout}
+        onClick={() => {
+          props.functions.logout();
+          props.functions.toggleShowTabs();
+        }}
       />
       {
         props.schedules.map((schedule, index) => {
@@ -32,7 +35,10 @@ let tabs = (props) => {
           <Tab
             title={schedule.name}
             icon={<i className="fas fa-clipboard-list fa-fw"></i>}
-            onClick={() => props.functions.setScheduleIndex(index)}
+            onClick={() => {
+              props.functions.setScheduleIndex(index);
+              props.functions.toggleShowTabs();
+            }}
             key={schedule.key}
           />
         )})
