@@ -8,9 +8,11 @@ class navigationBar extends Component {
   toggleShowTabs = () => {
     let showTabs = !this.state.showTabs;
     this.setState({showTabs: showTabs});
+    this.props.functions.toggleBodyBackdrop();
   }
 
   render() {
+    this.props.functions.toggleShowTabs = this.toggleShowTabs;
     return (
       <div>
         <div className='container-fluid navigationBar-container'>
