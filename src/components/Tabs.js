@@ -17,10 +17,10 @@ let tabs = (props) => {
   }
   return (
     <Auxiliary>
-      <Tab
+      {/*<Tab
         title={'About'}
         icon={<i className="fas fa-info fa-fw"></i>}
-      />
+      />*/}
       <Tab
         title={'Logout'}
         icon={<i className="fas fa-user fa-fw"></i>}
