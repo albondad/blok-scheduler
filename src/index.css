@@ -17,6 +17,7 @@
 body {
   background-color: var(--white01);
   margin: 0px;
+
 }
 hr {
   border: 10px solid var(--gray02);
@@ -29,6 +30,7 @@ hr {
   position: absolute;
   padding: 0% 10% 0% 10%;
   width: 100%;
+  height: -webkit-fill-available;
 }
 .text-title {
   margin-top: 16px;
