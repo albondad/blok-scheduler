@@ -7,7 +7,7 @@ import ScheduleViewer from './ScheduleViewer';
 let body = (props) => {
   return(
     <section id='body'>
-      <div id='body-title'>{props.schedules.length && props.schedules[props.schedulesIndex] ? props.schedules[props.schedulesIndex].name : null}</div>
+      <div id='body-title'>{props.isAuthenticated && props.schedules.length && props.schedules[props.schedulesIndex] ? props.schedules[props.schedulesIndex].name : null}</div>
       {
         //showss body backdrop
         props.showBodyBackdrop ?
