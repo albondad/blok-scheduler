@@ -80,7 +80,7 @@ class Countdown extends Component {
       <Auxiliary>
       <div className='body-header text-uppercase'>
         <div className='row'>
-          <div className='col-6'>Schedule</div>
+          <div className='col-6'>Countdown</div>
           <div className='col-6 text-right'><i className="fas fa-clock fa-fw"></i></div>
         </div>
       </div>
