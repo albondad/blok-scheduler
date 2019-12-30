@@ -362,10 +362,10 @@ input:focus {
     padding: 16px 12px;
   }
   #scheduleViewer-containerCountdown {
-    padding: 16px 32px;
+    padding: 16px 12px;
   }
   #scheduleViewer-containerBlockEvents {
-    padding: 16px 32px;
+    padding: 16px 12px;
   }
   #modal-content {
     width: 40%;
