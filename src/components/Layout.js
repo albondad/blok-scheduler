@@ -22,6 +22,8 @@ class Layout extends Component {
     showModal: false,
     modalContent: null,
 
+    loading: false,
+
     schedules: [],
     schedulesIndex: 0,
   }
@@ -39,16 +41,21 @@ class Layout extends Component {
   }
   loginWithGoogle = () => {
     //console.log('[loginWithGoogle] function called')
+    let instance = this;
+    instance.setState({loading: true})
     let provider = new firebase.auth.GoogleAuthProvider();
+    //console.log(provider);
     firebase.auth().signInWithPopup(provider).then(result => {
       //console.log('[loginWithGoogle] account chosen')
+      console.log(result);
       firebase.firestore().collection('users').doc(result.user.uid).get().then(doc => {
-        //console.log('checking for account');
         if (!doc.exists) {
           firebase.firestore().collection('users').doc(result.user.uid).set({schedules: []});
         }
       })
     }).catch(function(error) {
+      console.log(error)
+      instance.setState({loading: false});
     });
   }
   loginWithFacebook = () => {
@@ -143,7 +150,7 @@ class Layout extends Component {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         //console.log('[onAuthStateChanged] user logged in');
-        this.setState({isAuthenticated: true});
+        this.setState({loading: false, isAuthenticated: true});
         firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid).get().then(snapshot => {
           if (snapshot.data() !== undefined) {
             this.setState({schedules: snapshot.data().schedules})
@@ -193,6 +200,7 @@ class Layout extends Component {
           isAuthenticated={this.state.isAuthenticated}
           showAbout={this.state.showAbout}
           showBodyBackdrop={this.state.showBodyBackdrop}
+          loading={this.state.loading}
           schedules={this.state.schedules}
           schedulesIndex={this.state.schedulesIndex}
           functions={{

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,300,400,700&display=swap');
 
+/*INITIAL*/
 * {
   font-family: Roboto;
 }
@@ -12,7 +13,6 @@
   --white01: #FFFFFF;
   --black01: #212121;
 }
-
 
 body {
   background-color: var(--white01);
@@ -37,6 +37,44 @@ hr {
   margin: 32px 32px;
 }
 
+/*OTHER*/
+/*loading animation from loading.io*/
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: var(--blue01) transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 
 /*BODY*/
 #body {
@@ -45,10 +83,14 @@ hr {
   width: 100%;
   height: -webkit-fill-available;
 }
+#text-loading {
+  color: var(--blue01);
+  font-size: 16;
+}
 .text-title {
   margin-bottom: 36px;
   color: var(--blue01);
-  font-size: 16px;
+  font-size: 16;
   text-align: center;
 }
 
@@ -291,11 +333,21 @@ input:focus {
 }
 
 @media (min-width: 992px) {
+  button {
+    width: 50%;
+    margin: auto;
+    margin-bottom: 16px;
+  }
   #body {
     position: absolute;
     width: 100%;
     height: -webkit-fill-available;
-    padding: 0% 30% 0% 30%;
+    padding: 36px 30% 0% 30%;
+  }
+  #logoContainer {
+    width: 25%;
+    margin: auto;
+    margin-bottom: 16px;
   }
   .navigationBar-menu {
     padding: 16px calc(30% + 12px);

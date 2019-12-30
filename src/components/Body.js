@@ -10,8 +10,18 @@ let body = (props) => {
   return(
     <section id='body'>
       {
+        //loading animation
+        props.loading ?
+        <Auxiliary>
+          <div className='d-flex justify-content-center'><div className="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+          <br />
+          <div id='text-loading' className='text-center'>please wait...</div>
+        </Auxiliary>
+        : null
+      }
+      {
         //shows authentication forms
-        !props.isAuthenticated ?
+        !props.isAuthenticated && !props.loading ?
         <Auxiliary>
           <Logo />
           <Authentication functions={props.functions}/>
