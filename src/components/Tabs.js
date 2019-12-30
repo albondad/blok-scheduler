@@ -17,16 +17,21 @@ let tabs = (props) => {
   }
   return (
     <Auxiliary>
-      {/*<Tab
+      {<Tab
         title={'About'}
         icon={<i className="fas fa-info fa-fw"></i>}
-      />*/}
+        onClick={() => {
+          props.functions.showAbout();
+          props.functions.toggleShowTabs();
+        }}
+      />}
       <Tab
         title={'Logout'}
         icon={<i className="fas fa-user fa-fw"></i>}
         onClick={() => {
-          props.functions.logout();
+          props.functions.hideAbout();
           props.functions.toggleShowTabs();
+          props.functions.logout();
         }}
       />
       {
@@ -37,6 +42,7 @@ let tabs = (props) => {
             icon={<i className="fas fa-clipboard-list fa-fw"></i>}
             onClick={() => {
               props.functions.setScheduleIndex(index);
+              props.functions.hideAbout();
               props.functions.toggleShowTabs();
             }}
             key={schedule.key}

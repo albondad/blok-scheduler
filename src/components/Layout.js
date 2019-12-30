@@ -15,6 +15,8 @@ class Layout extends Component {
   state = {
     isAuthenticated: false,
 
+    showAbout: false,
+
     showBodyBackdrop: false,
 
     showModal: false,
@@ -63,6 +65,13 @@ class Layout extends Component {
   toggleBodyBackdrop = () => {
     let showBodyBackdrop = this.state.showBodyBackdrop;
     this.setState({showBodyBackdrop: !showBodyBackdrop});
+  }
+  //about functions
+  showAbout = () => {
+    this.setState({showAbout: true})
+  }
+  hideAbout = () => {
+    this.setState({showAbout: false});
   }
   //modal functions
   showModal = (modalContent) => {
@@ -168,6 +177,8 @@ class Layout extends Component {
             schedules={this.state.schedules}
             functions={{
               toggleBodyBackdrop: this.toggleBodyBackdrop,
+              showAbout: this.showAbout,
+              hideAbout: this.hideAbout,
               showModal: this.showModal,
               hideModal: this.hideModal,
               logout: this.logout,
@@ -180,16 +191,20 @@ class Layout extends Component {
 
         <Body
           isAuthenticated={this.state.isAuthenticated}
+          showAbout={this.state.showAbout}
+          showBodyBackdrop={this.state.showBodyBackdrop}
           schedules={this.state.schedules}
           schedulesIndex={this.state.schedulesIndex}
-          showBodyBackdrop={this.state.showBodyBackdrop}
           functions={{
             signUpWithEmailAndPassword: this.signUpWithEmailAndPassword,
             loginWithEmailAndPassword: this.loginWithEmailAndPassword,
             loginWithGoogle: this.loginWithGoogle,
             loginWithFacebook: this.loginWithFacebook,
+            showAbout: this.showAbout,
+            hideAbout: this.hideAbout,
             showModal: this.showModal,
             hideModal: this.hideModal,
+            createSchedule: this.createSchedule,
             deleteSchedule: this.deleteSchedule,
             createBlockEvent: this.createBlockEvent,
             deleteBlockEvent: this.deleteBlockEvent,

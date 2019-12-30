@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import Auxiliary from './Auxiliary';
 
 class Countdown extends Component {
+  interval = null;
+
   state = {
     name: 'no events',
     duration: '00:00 AM to 00:00 PM',
@@ -66,7 +68,11 @@ class Countdown extends Component {
   }
 
   componentDidMount = () => {
-    setInterval(this.getCurrentBlockEvent, 1000);
+    this.interval = setInterval(this.getCurrentBlockEvent, 1000);
+  }
+
+  componentWillUnmount = () => {
+    clearInterval(this.interval);
   }
 
   render() {

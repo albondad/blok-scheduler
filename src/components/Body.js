@@ -2,20 +2,15 @@ import React from 'react';
 import Auxiliary from './Auxiliary'
 import Logo from './Logo';
 import Authentication from './Authentication';
+import FormAddSchedule from './FormAddSchedule'
 import ScheduleViewer from './ScheduleViewer';
+import About from './About';
 
 let body = (props) => {
   return(
     <section id='body'>
-      <div id='body-title'>{props.isAuthenticated && props.schedules.length && props.schedules[props.schedulesIndex] ? props.schedules[props.schedulesIndex].name : null}</div>
       {
-        //showss body backdrop
-        props.showBodyBackdrop ?
-        <div id='body-backdrop'></div>
-        : null
-      }
-      {
-        //showss authentication forms
+        //shows authentication forms
         !props.isAuthenticated ?
         <Auxiliary>
           <Logo />
@@ -24,19 +19,41 @@ let body = (props) => {
         : null
       }
       {
-        //showss schedule viewer
-        props.isAuthenticated && props.schedules.length && props.schedules[props.schedulesIndex] ?
-        <ScheduleViewer
-            schedules={props.schedules}
-            schedulesIndex={props.schedulesIndex}
-            functions={props.functions}
-        />
+        //shows about page
+        props.isAuthenticated && props.showAbout ?
+        <About /> :
+        null
+      }
+      {
+        //showss body backdrop
+        props.showBodyBackdrop ?
+        <div id='body-backdrop'></div>
+        : null
+      }
+      {
+        //shows schedule viewer
+        props.isAuthenticated && !props.showAbout && props.schedules.length && props.schedules[props.schedulesIndex] ?
+        <Auxiliary>
+          <div id='body-title'>{props.schedules[props.schedulesIndex].name}</div>
+          <ScheduleViewer
+              schedules={props.schedules}
+              schedulesIndex={props.schedulesIndex}
+              functions={props.functions}
+          />
+        </Auxiliary>
         : null
       }
       {
         //checks if there's no schedules
-        props.isAuthenticated && !props.schedules.length ?
-        <div className='text-title'>You don't have any schedules!</div>
+        props.isAuthenticated && !props.schedules.length && !props.showAbout ?
+        <Auxiliary>
+          <div className='text-title'>You don't have any schedules!</div>
+          <button onClick={() => props.functions.showModal(
+            <FormAddSchedule
+              functions={props.functions}
+            />
+          )}>Create Schedule</button>
+        </Auxiliary>
         : null
       }
       {
