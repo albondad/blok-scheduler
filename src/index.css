@@ -176,8 +176,6 @@ input:focus {
   color: var(--black01);
   font-size: 12px;
 }
-
-/*AUTHENTICATION FORM*/
 .formAuthentication-back {
   color: var(--blue01);
   font-size: 36px;
@@ -224,6 +222,12 @@ input:focus {
   padding: 16px calc(10% + 12px);
   color: black;
   font-weight: 400;
+}
+
+
+/*ABOUT*/
+#body-about {
+  padding: 0px 12px;
 }
 
 
