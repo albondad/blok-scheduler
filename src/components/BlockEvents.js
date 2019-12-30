@@ -49,7 +49,7 @@ let blockEvents = (props) => {
     <Auxiliary>
       <div className='container-fluid body-header text-uppercase'>
         <div className='row'>
-          <div className='col-6'>Schedule</div>
+          <div className='col-6'>Events</div>
           <div className='col-6 text-right'><i className="fas fa-clipboard fa-fw"></i></div>
         </div>
       </div>
