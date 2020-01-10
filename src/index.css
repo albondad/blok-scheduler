@@ -127,10 +127,10 @@ button {
   text-shadow: 0px 3px 6px rgba(0, 0, 0, .16);
 }
 button:hover {
-  rgba(0, 113, 188, 0.16)
+  background-color: rgba(0, 113, 188, 0.16);
 }
 button:focus {
-  rgba(0, 113, 188, 0.16)
+  background-color:rgba(0, 113, 188, 0.16);
 }
 .google {
   background-color: #DE5246;
@@ -343,7 +343,8 @@ input:focus {
 }
 
 @media (min-width: 992px) {
-  button {
+  
+  {
     width: 50%;
     margin: auto;
     margin-bottom: 16px;
